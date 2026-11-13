@@ -88,3 +88,12 @@ The owner intentionally kept the tested cameras on an isolated local network as 
 ### UART research path
 
 An ESP32 board may act as a 3.3 V TTL UART bridge **if suitable firmware and pin mapping are used**. A dedicated USB-to-TTL adapter is simpler. Identify camera ground, TX, and RX from board evidence before wiring. Never attach an unknown pin, 5 V logic, or an ESP32 power pin to a camera UART. Begin with **receive-only** monitoring of boot output; do not issue bootloader commands or flash firmware until the console behavior and backup/recovery plan are understood.
+
+
+## Deployment constraints and practical access limitations (owner observations)
+
+The owner reports that some tested cameras appear to permit only **one active client/session** at a time; an existing viewer or vendor session may therefore prevent a second connection. This is an observation, **not yet a verified protocol-wide or model-wide limit**. Test per service (RTSP, web UI, management), firmware version, and session state, including after disconnect/reboot.
+
+The owner's recovery workflow has involved **physical access** to the camera and local reset/provisioning. Possession of a derived password alone should not be represented as proof that an arbitrary third party can remotely access a deployed camera. A camera returned to its original configured network may resume vendor communication or management after reboot if that infrastructure remains available; this behavior needs packet-level confirmation and may vary by deployment. The owner's cameras are on a separate network that restricts vendor connectivity.
+
+**Public disclosure framing:** describe the credential derivation as a security finding while explicitly separating it from remote exploitability, physical-access prerequisites, concurrent-session limits, and post-reboot persistence. Network isolation is a mitigation, not proof of immunity. Do not claim that single-session behavior or a vendor connection prevents every unauthorized access path.
