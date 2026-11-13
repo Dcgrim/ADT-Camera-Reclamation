@@ -97,3 +97,12 @@ The owner reports that some tested cameras appear to permit only **one active cl
 The owner's recovery workflow has involved **physical access** to the camera and local reset/provisioning. Possession of a derived password alone should not be represented as proof that an arbitrary third party can remotely access a deployed camera. A camera returned to its original configured network may resume vendor communication or management after reboot if that infrastructure remains available; this behavior needs packet-level confirmation and may vary by deployment. The owner's cameras are on a separate network that restricts vendor connectivity.
 
 **Public disclosure framing:** describe the credential derivation as a security finding while explicitly separating it from remote exploitability, physical-access prerequisites, concurrent-session limits, and post-reboot persistence. Network isolation is a mitigation, not proof of immunity. Do not claim that single-session behavior or a vendor connection prevents every unauthorized access path.
+
+
+## High-priority lead: date-check routine and outbound vendor connection
+
+**Owner recollection (not yet independently verified):** During earlier camera research, a routine or setting described as checking the *date* appeared to contact a remote ADT-associated host instead of merely checking local date/time. The owner recalls a hostname resembling `security.com` or `camera.com`, but the **exact domain is unknown**. Do not treat those example names as observed DNS traffic, and do not assume this is the same component as the VPN.
+
+**Corroborating external evidence, narrower in scope:** Nathan Higley's OC845 investigation reports that, after obtaining root access, he disabled a VPN attempting to call back to ADT. Source: https://blog.nathanhigley.com/iotcamerahacking/ . His article does **not** identify a date-check routine or the hostname recalled above.
+
+**Verification plan:** On the owner's isolated OC845, locate the actual date/time-check code path or setting in firmware/configuration; capture its DNS queries and outbound connection attempts at the gateway during boot and the relevant check; record destination hostname/IP, protocol, trigger, timing, and response without granting unrestricted WAN access. Compare with any VPN service separately. Test whether disabling the function persists across reboot and whether local camera operation continues. Keep the RC845 investigation separate: behavior on OC845 is not automatically evidence for RC845.
