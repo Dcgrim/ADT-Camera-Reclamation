@@ -72,3 +72,19 @@ Do not commit `Camera.txt`, passwords, embedded-password RTSP URLs, private netw
 ## Embedded-Linux and microSD research direction
 
 The SD-card management route `/sd/sdctrl.cgi`, the `SDCARD` configuration group, and the reported `format`/`safe_rm` actions motivate a separate investigation. Their presence does not demonstrate a mounted filesystem, bootable recovery media, or execution of files placed on microSD. See [SD_CARD_RESEARCH.md](SD_CARD_RESEARCH.md) for the evidence ledger and first non-destructive test. Nathan Higley remains the primary external firmware-research reference; his UART/Amboot work is distinguished from the proposed microSD experiments.
+
+## Vendor communication and credential persistence — open question
+
+The owner intentionally kept the tested cameras on an isolated local network as a precaution after reviewing prior camera research, including Nathan Higley's work. The owner recalls possible vendor “phone home” behavior and a concern that credentials might be changed or reset, but **neither behavior has yet been demonstrated on these specific devices**. A previous configuration change may have disabled some remote function; its exact mechanism and persistence have not been reconstructed. Do not present any of these as established facts.
+
+### Non-destructive verification plan
+
+1. Preserve the currently working configuration and record model and firmware build.
+2. Observe outbound DNS and connection attempts at an isolated router/firewall or packet capture point; record only sanitized destination metadata and timestamps.
+3. Compare behavior with WAN blocked and (only with explicit owner approval) a tightly monitored WAN test; do not expose the camera management interface publicly.
+4. Check whether known local credentials still authenticate before and after reboot; do not intentionally allow a vendor-side credential change without a recovery plan.
+5. Document any previously changed settings only when supported by device configuration, logs, or reproducible tests.
+
+### UART research path
+
+An ESP32 board may act as a 3.3 V TTL UART bridge **if suitable firmware and pin mapping are used**. A dedicated USB-to-TTL adapter is simpler. Identify camera ground, TX, and RX from board evidence before wiring. Never attach an unknown pin, 5 V logic, or an ESP32 power pin to a camera UART. Begin with **receive-only** monitoring of boot output; do not issue bootloader commands or flash firmware until the console behavior and backup/recovery plan are understood.
