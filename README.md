@@ -40,6 +40,7 @@ ADT-Camera-Reclamation/
 ├── README.md
 ├── docs/
 │   ├── OC845-research.md
+│   ├── finding-the-correct-mac.md
 │   ├── RC845-research.md
 │   └── sd-card-investigation.md
 ├── tools/
@@ -54,6 +55,7 @@ ADT-Camera-Reclamation/
 ## Get started
 
 - [OC845 research and findings](docs/OC845-research.md)
+- [Find the correct camera MAC and follow a fictional worked example](docs/finding-the-correct-mac.md)
 - [Offline OC845 helper — installation and usage](tools/oc845-password-recovery/README.md)
 - [Python application source](tools/oc845-password-recovery/camera_app.py)
 - [RC845 indoor model research tracker](docs/RC845-research.md)
