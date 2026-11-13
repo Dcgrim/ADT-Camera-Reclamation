@@ -41,23 +41,30 @@ ADT-Camera-Reclamation/
 ├── docs/
 │   ├── OC845-research.md
 │   ├── RC845-research.md
-│   ├── rtsp-and-local-viewing.md
 │   └── sd-card-investigation.md
 ├── tools/
 │   └── oc845-password-recovery/
-├── dashboard/
-├── examples/
-└── LICENSE
+│       ├── README.md
+│       └── camera_app.py
+└── .gitignore
 ```
 
-*This is the planned layout, not a claim that all files have been uploaded yet.*
+*These research documents and the offline helper are now committed. The multi-camera dashboard is still being prepared for a safe public release.*
+
+## Get started
+
+- [OC845 research and findings](docs/OC845-research.md)
+- [Offline OC845 helper — installation and usage](tools/oc845-password-recovery/README.md)
+- [Python application source](tools/oc845-password-recovery/camera_app.py)
+- [RC845 indoor model research tracker](docs/RC845-research.md)
+- [microSD investigation](docs/sd-card-investigation.md)
 
 ## Research roadmap
 
 - [x] Identify and test OC845 local-access behavior on owned cameras
 - [x] Demonstrate local video viewing on the tested OC845 setup
-- [ ] Publish a reviewed, sanitized offline OC845 recovery utility
-- [ ] Publish reproducible setup and troubleshooting documentation
+- [x] Publish a sanitized offline OC845 recovery utility (runtime testing still recommended)
+- [x] Publish initial field research and helper setup instructions (more troubleshooting to come)
 - [ ] Document the RC845's firmware and local interfaces independently
 - [ ] Investigate microSD configuration and recovery behavior without destructive flashing
 - [ ] Package the local multi-camera dashboard for repeatable installation
