@@ -69,6 +69,16 @@ ADT-Camera-Reclamation/
 
 The example IP is a placeholder; enter your own camera address. The MAC-derived password method was documented for OC845 firmware and is **not verified for all RC845 firmware revisions**. The HTML files and Python companion have not been independently tested against every device revision.
 
+## Finding and following this project
+
+This public repository is intended to be discoverable by owners searching for **ADT OC845**, **ADT RC845**, **Sercomm camera local access**, **camera RTSP**, **enable_ui.cgi**, and **offline camera administration tools**.
+
+**Start here:** [OC845/RC845 Pocket Tool v1](tools/OC845_Pocket_Tool.html) is a standalone offline HTML utility; [Pocket Tool v2](tools/OC845_Pocket_Tool_v2.html) and its [local Python companion](tools/OC845_Local_Server.py) support read-only configuration-group viewing on your own LAN. Download the files rather than relying on GitHub's source preview to run them.
+
+**Help improve the research:** If you have tested an OC845 or RC845, please open an Issue with the exact model, firmware version, and which features worked. Redact MAC addresses, IP addresses, passwords, tokens, and private video before posting. Reports that contradict our current observations are welcome.
+
+**Tracking interest:** GitHub repository owners can use [Insights → Traffic](../../graphs/traffic) to view the previous 14 days of views, unique visitors, clones, referrers, and popular content. Stars, forks, issues, and pull requests are additional public signs of interest; views are anonymous and do not prove software use.
+
 ## Research roadmap
 
 - [x] Identify and test OC845 local-access behavior on owned cameras
