@@ -3,7 +3,7 @@
 
 Research, documentation, and local-first tools for repurposing **ADT OC845 outdoor** and **RC845 indoor** IP cameras without relying on a vendor cloud.
 
-> **Project status:** Active research. OC845 local access has been demonstrated on the project owner's equipment. RC845 support is being investigated separately; compatibility is **not** assumed.
+> **Project status:** Active research. OC845 local access has been demonstrated on the project owner's equipment. The owner reports local access working on both OC845 and RC845 cameras; independent firmware comparison remains outstanding.
 
 ## Why this exists
 
@@ -21,9 +21,9 @@ A functioning camera should not become e-waste just because a subscription ends 
 | Model | Form factor | Current project status |
 | --- | --- | --- |
 | **OC845** | Outdoor IP camera | Local access and RTSP use demonstrated on project devices; research and tooling in progress |
-| **RC845** | Indoor IP camera | Identified as an additional research target; firmware, authentication, and stream compatibility still need independent validation |
+| **RC845** | Indoor IP camera | Owner reports successful local access and video operation; exact firmware and PCB equivalence not yet established |
 
-**Do not assume the RC845 shares the OC845's credentials, firmware, recovery method, or endpoints.**
+**Owner observation:** RC845 boards appear closely related to published OC845 board photographs, and the same general local-access approach reportedly worked. Firmware identity and hardware interchangeability are not yet established.
 
 ## What we've learned so far
 
@@ -61,13 +61,21 @@ ADT-Camera-Reclamation/
 - [RC845 indoor model research tracker](docs/RC845-research.md)
 - [microSD investigation](docs/sd-card-investigation.md)
 
+## Pocket tools (OC845 / RC845 research)
+
+- [Pocket Tool v1 — standalone HTML](tools/OC845_Pocket_Tool.html): offline MAC-based candidate credential calculator and camera URL builder. Save the HTML and open it in a browser.
+- [Pocket Tool v2 — HTML interface](tools/OC845_Pocket_Tool_v2.html): same offline features, plus live read-only configuration-group retrieval when served with the companion.
+- [Local Python companion](tools/OC845_Local_Server.py): run `python OC845_Local_Server.py` in the same folder as the v2 HTML, then visit `http://127.0.0.1:8765`. Python 3 standard library only. Camera reads are restricted to private LAN addresses and read-only group endpoints. Camera credentials are supplied locally at runtime, not saved.
+
+The example IP is a placeholder; enter your own camera address. The MAC-derived password method was documented for OC845 firmware and is **not verified for all RC845 firmware revisions**. The HTML files and Python companion have not been independently tested against every device revision.
+
 ## Research roadmap
 
 - [x] Identify and test OC845 local-access behavior on owned cameras
 - [x] Demonstrate local video viewing on the tested OC845 setup
 - [x] Publish a sanitized offline OC845 recovery utility (runtime testing still recommended)
 - [x] Publish initial field research and helper setup instructions (more troubleshooting to come)
-- [ ] Document the RC845's firmware and local interfaces independently
+- [ ] Compare RC845 firmware and board identifiers against OC845 independently
 - [ ] Investigate microSD configuration and recovery behavior without destructive flashing
 - [ ] Package the local multi-camera dashboard for repeatable installation
 - [ ] Record firmware/version compatibility and known limitations
